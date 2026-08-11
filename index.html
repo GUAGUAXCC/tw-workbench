@@ -106,7 +106,7 @@
   .quote .txt { font-size: 16px; font-weight: 600; line-height: 1.55; color: var(--text); }
 
   /* ---------- overview rings ---------- */
-  .rings { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 20px 6px; margin-top: 14px; }
+  .rings { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; padding: 20px 4px; margin-top: 14px; }
   .ring { display:flex; flex-direction:column; align-items:center; gap: 8px; }
   .ring .dial { position: relative; width: 68px; height: 68px; }
   .ring .dial svg.gauge { transform: rotate(-90deg); width: 68px; height: 68px; }
@@ -125,7 +125,7 @@
   .trend-x { display:flex; justify-content:space-between; font-size:10px; color:var(--text-secondary); margin-top:4px; padding: 0 6px; }
   .trend-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; height: 120px;
     color: var(--text-tertiary); font-size: 12px; margin-top: 8px; }
-  .quick-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .quick-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
   .qbtn { display:flex; flex-direction:column; align-items:center; gap:9px; padding: 15px 6px 12px; border:none; cursor:pointer;
     border-radius: var(--radius-tile); background: var(--surface-card); border:1px solid var(--border); box-shadow: var(--shadow-card);
     text-align:center; transition: transform .12s, border-color .15s, box-shadow .15s; }
@@ -344,6 +344,76 @@
   .cal-foot { margin-top:12px; font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px; }
   .cal-foot svg { color:var(--module-3); }
 
+  /* ---------- plan module (减脂计划) ---------- */
+  .plan-hero { display:flex; align-items:center; gap:14px; padding:16px 18px; border-radius:var(--radius-card);
+    background:linear-gradient(135deg, #fce8e0, #f9ddd0); border:1px solid #f0cdc0; box-shadow:var(--shadow-card); position:relative; overflow:hidden; }
+  .plan-hero::after { content:""; position:absolute; right:-20px; top:-20px; width:90px; height:90px; border-radius:50%;
+    background:radial-gradient(circle, rgba(196,165,114,.18), transparent 70%); }
+  .plan-hero .ph-ic { width:42px; height:42px; border-radius:var(--radius-tile); display:grid; place-items:center; flex:0 0 auto;
+    background:#fff; color:var(--module-3); box-shadow:0 2px 8px rgba(196,109,77,.12); }
+  .plan-hero .ph-tx { flex:1; min-width:0; position:relative; z-index:1; }
+  .plan-hero .ph-v { font-size:20px; font-weight:800; letter-spacing:-.02em; color:#8a5a3e; }
+  .plan-hero .ph-l { font-size:12px; color:#a67a62; margin-top:2px; }
+  .plan-hero .ph-bar { height:6px; border-radius:999px; background:rgba(255,255,255,.5); overflow:hidden; margin-top:10px; }
+  .plan-hero .ph-bar i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, var(--module-3), var(--module-4)); }
+
+  .plan-today { margin-top:14px; padding:20px 18px; border-radius:var(--radius-card); background:var(--surface-card);
+    border:1px solid var(--border); box-shadow:var(--shadow-card); position:relative; overflow:hidden; }
+  .plan-today.is-rest { background:linear-gradient(135deg, #f4eee6, #f0e8de); border-color:#e5dccd; }
+  .plan-today .pt-tag { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; letter-spacing:.03em;
+    padding:4px 10px; border-radius:999px; background:var(--module-3); color:#fff; }
+  .plan-today .pt-tag.rest { background:var(--module-5); }
+  .plan-today .pt-date { font-size:12px; color:var(--text-secondary); margin-left:8px; font-weight:500; }
+  .plan-today .pt-title { font-size:19px; font-weight:800; letter-spacing:-.02em; margin-top:12px; color:var(--text); }
+  .plan-today .pt-detail { font-size:13.5px; color:var(--text-secondary); line-height:1.65; margin-top:10px; white-space:pre-wrap; }
+  .plan-today .pt-video { display:inline-flex; align-items:center; gap:7px; margin-top:14px; padding:10px 18px; border-radius:999px;
+    background:var(--module-4); color:#fff; font-size:13px; font-weight:700; border:none; cursor:pointer; box-shadow:0 3px 10px rgba(184,131,122,.25);
+    transition:transform .12s, filter .15s; text-decoration:none; }
+  .plan-today .pt-video:active { transform:scale(.96); filter:brightness(1.1); }
+  .plan-today .pt-done { display:inline-flex; align-items:center; gap:7px; margin-top:14px; margin-left:10px; padding:10px 18px; border-radius:999px;
+    font-size:13px; font-weight:700; border:none; cursor:pointer; transition:all .15s; }
+  .plan-today .pt-done.undone { background:var(--module-3); color:#fff; box-shadow:0 3px 10px rgba(196,165,114,.3); }
+  .plan-today .pt-done.undone:active { transform:scale(.96); }
+  .plan-today .pt-done.done { background:var(--module-1); color:#fff; }
+  .plan-today .pt-done.done:active { transform:scale(.96); }
+  .plan-today .pt-empty { text-align:center; padding:30px 16px; color:var(--text-secondary); font-size:14px; }
+  .plan-today .pt-empty .e { display:inline-grid; place-items:center; width:52px; height:52px; border-radius:var(--radius-card);
+    background:var(--surface-nested); border:1px solid var(--border); color:var(--text-tertiary); margin-bottom:12px; }
+
+  .plan-cal { margin-top:14px; }
+  .plan-cal .pc-hd { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px; }
+  .plan-cal .pc-hd .legend { margin-left:auto; display:flex; gap:10px; font-size:11px; font-weight:500; color:var(--text-secondary); }
+  .plan-cal .pc-hd .legend span { display:inline-flex; align-items:center; gap:4px; }
+  .plan-cal .pc-hd .legend i { width:10px; height:10px; border-radius:3px; display:inline-block; }
+  .plan-strip { display:flex; gap:5px; overflow-x:auto; padding:4px 2px 10px; scrollbar-width:thin; }
+  .plan-strip::-webkit-scrollbar { height:4px; }
+  .plan-strip::-webkit-scrollbar-thumb { background:var(--border-input); border-radius:999px; }
+  .plan-day { flex:0 0 auto; width:42px; display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer; }
+  .plan-day .pd-box { width:42px; height:42px; border-radius:10px; display:grid; place-items:center; font-size:13px; font-weight:700;
+    background:var(--surface-nested); border:1.5px solid var(--border); color:var(--text-secondary); transition:all .15s; position:relative; }
+  .plan-day.rest .pd-box { background:#f4eee6; border-color:#e5dccd; color:#a08a6a; }
+  .plan-day.done .pd-box { background:var(--module-3); border-color:var(--module-3); color:#fff; }
+  .plan-day.today .pd-box { box-shadow:0 0 0 2.5px var(--module-4); }
+  .plan-day.sel .pd-box { border-color:var(--module-4); box-shadow:0 0 0 2.5px var(--module-4); }
+  .plan-day .pd-dow { font-size:9px; color:var(--text-tertiary); font-weight:600; }
+  .plan-day:active .pd-box { transform:scale(.9); }
+
+  .plan-detail { margin-top:6px; padding:14px 16px; border-radius:var(--radius-tile); background:var(--surface-nested);
+    border:1px solid var(--border); }
+  .plan-detail .pd-phase { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px;
+    background:var(--accent-muted); color:var(--accent); }
+  .plan-detail .pd-title { font-size:15px; font-weight:700; margin-top:8px; color:var(--text); }
+  .plan-detail .pd-text { font-size:12.5px; color:var(--text-secondary); line-height:1.6; margin-top:6px; white-space:pre-wrap; }
+  .plan-detail .pd-video { display:inline-flex; align-items:center; gap:5px; margin-top:10px; font-size:12px; font-weight:600; color:var(--module-4); }
+  .plan-detail .pd-video svg { flex:0 0 auto; }
+
+  .plan-ref { margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .plan-ref .pr-card { padding:13px 14px; border-radius:var(--radius-tile); background:var(--surface-card); border:1px solid var(--border); box-shadow:var(--shadow-card); }
+  .plan-ref .pr-card h4 { font-size:12px; font-weight:700; color:var(--text-secondary); margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+  .plan-ref .pr-card ul { list-style:none; padding:0; margin:0; }
+  .plan-ref .pr-card li { font-size:12px; color:var(--text); line-height:1.8; }
+  .plan-ref .pr-card li b { color:var(--module-3); font-weight:700; }
+
   .hidden { display: none !important; }
 </style>
 </head>
@@ -416,6 +486,8 @@ const CONFIG = {
       calc: d => avgProgress(d.kaobo) },
     { key: "sport", label: "运动", icon: "activity", color: "var(--module-3)",
       calc: d => avgProgress(d.sport) },
+    { key: "fitness", label: "减脂", icon: "flame", color: "var(--module-4)",
+      calc: d => { const log=d.fitness||{}; const days=Object.keys(log).filter(k=>log[k]).length; return { value: Math.round(days/36*100), sub: `${days}/36 天` }; } },
   ],
 
   trend: {
@@ -428,6 +500,7 @@ const CONFIG = {
     { label: "记打卡", icon: "check",    module: "checkin", tint: "#eef3ec", color: "var(--module-1)" },
     { label: "记一笔", icon: "wallet",   module: "money",   tint: "#f6efe8", color: "var(--module-4)" },
     { label: "记想法", icon: "pen",      module: "note",    tint: "#f1eef4", color: "var(--module-5)" },
+    { label: "减脂打卡", icon: "flame",  module: "fitness", tint: "#fce8e6", color: "var(--module-4)" },
   ],
 
   modules: [
@@ -499,6 +572,49 @@ const CONFIG = {
       moods: ["待整理", "撰写中", "已定稿"],
       seed: [
         { id: 71, title: "成果奖申报框架", content: "主题：城校共生·动态适配·数智重塑。需收集闽江大学卓越工程师学院建设案例，结合研究生教育改革实践。", mood: "撰写中", date: isoToday() },
+      ],
+    },
+    {
+      key: "fitness", name: "减脂计划", icon: "flame", tint: "#fce8e0", color: "var(--module-3)",
+      type: "plan", desc: "1个月居家减脂 · 7/20-8/24",
+      seed: {},
+      plan: [
+        {date:"2026-07-20",phase:"经期休息",title:"完全休息",detail:"前3天完全休息，注意保暖，不锻炼。",video:""},
+        {date:"2026-07-21",phase:"经期休息",title:"完全休息",detail:"前3天完全休息，注意保暖，不锻炼。",video:""},
+        {date:"2026-07-22",phase:"经期休息",title:"完全休息",detail:"前3天完全休息，注意保暖，不锻炼。",video:""},
+        {date:"2026-07-23",phase:"经期休息",title:"经期·拉伸+散步",detail:"拉伸绳全身放松20′ + 散步30′。",video:"https://bilibili.com/video/BV1Zz4y1o7Vx"},
+        {date:"2026-07-24",phase:"经期休息",title:"经期·拉伸+散步",detail:"拉伸绳全身放松20′ + 散步30′。",video:"https://bilibili.com/video/BV1Zz4y1o7Vx"},
+        {date:"2026-07-25",phase:"经期休息",title:"经期·拉伸+散步",detail:"拉伸绳全身放松20′ + 散步30′。",video:"https://bilibili.com/video/BV1Zz4y1o7Vx"},
+        {date:"2026-07-26",phase:"经期休息",title:"经期·拉伸+散步",detail:"拉伸绳全身放松20′ + 散步30′。",video:"https://bilibili.com/video/BV1Zz4y1o7Vx"},
+        {date:"2026-07-27",phase:"经期休息",title:"经期·拉伸+散步",detail:"拉伸绳全身放松20′ + 散步30′。",video:"https://bilibili.com/video/BV1Zz4y1o7Vx"},
+        {date:"2026-07-28",phase:"W1 适应期",title:"下肢力量+核心",detail:"哑铃深蹲4kg×2/3组15次、哑铃硬拉4kg×2/3组15次、哑铃弓步蹲4kg×2/3组每侧12次、哑铃臀桥4kg×2/3组15次、平板支撑3组30秒、卷腹3组15次。休45s/30s",video:""},
+        {date:"2026-07-29",phase:"W1 适应期",title:"骑车+帕梅拉",detail:"骑车15分钟稳态(坡度2%/80-100W/心率130-145) + 帕梅拉10分钟活力有氧水瓶燃脂 + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1G346zHEDh"},
+        {date:"2026-07-30",phase:"W1 适应期",title:"主动恢复",detail:"拉伸绳全身放松20′ + 户外散步30′",video:""},
+        {date:"2026-07-31",phase:"W1 适应期",title:"上肢力量+核心",detail:"哑铃卧推4kg×2/3组12-15次、哑铃划船4kg/3组每侧12次、哑铃肩推1-2kg/3组12次、哑铃弯举1-4kg/3组12-15次、哑铃臂屈伸1kg/3组每侧12次、死虫3组12次、俄罗斯转体3组20次。休45s/30s",video:""},
+        {date:"2026-08-01",phase:"W1 适应期",title:"骑车+帕梅拉",detail:"骑车15分钟稳态(坡度2%/80-100W/心率130-145) + 帕梅拉10分钟活力有氧水瓶燃脂 + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1G346zHEDh"},
+        {date:"2026-08-02",phase:"W1 适应期",title:"骑车HIIT+帕梅拉+核心",detail:"骑车15分钟HIIT(8组循环:冲刺30″75%档/心率160-175,恢复60″25%档) + 帕梅拉10分钟腹部燃脂 + 核心(平板30秒×3/登山跑30秒×3/卷腹15×3) + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1mb4y167fR"},
+        {date:"2026-08-03",phase:"W1 适应期",title:"休息",detail:"完全休息，可轻度散步。保证睡眠8小时。",video:""},
+        {date:"2026-08-04",phase:"W2 提升期",title:"下肢+核心",detail:"哑铃深蹲4kg×2/3组15次、哑铃硬拉4kg×2/3组15次、哑铃弓步蹲4kg×2/3组每侧12次、哑铃臀桥4kg×2/3组15次、平板支撑3组40秒、死虫3组12次",video:""},
+        {date:"2026-08-05",phase:"W2 提升期",title:"骑车+帕梅拉",detail:"骑车15分钟稳态(坡度3%/90-110W) + 帕梅拉10分钟活力有氧 + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1G346zHEDh"},
+        {date:"2026-08-06",phase:"W2 提升期",title:"上肢力量",detail:"哑铃卧推4kg×2/3组12-15次、哑铃划船4kg/3组每侧12次、哑铃肩推1-2kg/3组12次、哑铃弯举1-4kg/3组12-15次、哑铃臂屈伸1kg/3组每侧12次",video:""},
+        {date:"2026-08-07",phase:"W2 提升期",title:"骑车+帕梅拉",detail:"骑车15分钟稳态(坡度3%/90-110W) + 帕梅拉10分钟活力有氧 + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1G346zHEDh"},
+        {date:"2026-08-08",phase:"W2 提升期",title:"全身循环",detail:"6动作×3轮(哑铃深蹲/卧推/硬拉/划船/臀桥/肩推)，15s轮休。核心:平板40秒×3+卷腹15×3",video:""},
+        {date:"2026-08-09",phase:"W2 提升期",title:"骑车HIIT+帕梅拉+核心",detail:"骑车15分钟HIIT(8组) + 帕梅拉8分钟站立腹部HIIT + 核心(平板40秒×3/登山跑30秒×3/卷腹15×3) + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV15f4y1Y7xk"},
+        {date:"2026-08-10",phase:"W2 提升期",title:"休息",detail:"完全休息",video:""},
+        {date:"2026-08-11",phase:"W3 强化期",title:"下肢+核心",detail:"哑铃深蹲4kg×2/3组20次、哑铃硬拉4kg×2/3组20次、哑铃弓步蹲4kg×2/3组每侧15次、哑铃臀桥4kg×2/3组20次、平板支撑3组45秒、死虫3组15次、俄罗斯转体3组25次",video:""},
+        {date:"2026-08-12",phase:"W3 强化期",title:"骑车+帕梅拉",detail:"骑车15分钟稳态(坡度4%/100-120W) + 帕梅拉15分钟跳跃有氧 + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1QS4y1P7Yu"},
+        {date:"2026-08-13",phase:"W3 强化期",title:"上肢+肩",detail:"哑铃卧推4kg×2/3组15次、哑铃划船4kg/3组每侧15次、哑铃肩推1-2kg/3组15次、哑铃弯举1-4kg/3组15次、哑铃臂屈伸1kg/3组每侧15次、死虫3组15次",video:""},
+        {date:"2026-08-14",phase:"W3 强化期",title:"骑车+帕梅拉",detail:"骑车15分钟稳态(坡度4%/100-120W) + 帕梅拉15分钟跳跃有氧 + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1QS4y1P7Yu"},
+        {date:"2026-08-15",phase:"W3 强化期",title:"全身循环",detail:"6动作×3轮，15s轮休。核心:平板45秒×3+卷腹15×3",video:""},
+        {date:"2026-08-16",phase:"W3 强化期",title:"骑车HIIT+帕梅拉",detail:"骑车15分钟HIIT(10组) + 帕梅拉20分钟高强度HIIT + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1X7411Z7bE"},
+        {date:"2026-08-17",phase:"W3 强化期",title:"拉伸+散步",detail:"拉伸绳全身放松30′ + 散步30′",video:""},
+        {date:"2026-08-18",phase:"W4 冲刺期",title:"下肢力量",detail:"哑铃深蹲4kg×2/3组20次、哑铃硬拉4kg×2/3组20次、哑铃弓步蹲4kg×2/3组每侧15次、哑铃臀桥4kg×2/3组20次、平板支撑3组60秒",video:""},
+        {date:"2026-08-19",phase:"W4 冲刺期",title:"骑车+帕梅拉",detail:"骑车15分钟稳态(坡度4-5%/110-130W) + 帕梅拉20分钟热舞辣妹 + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1WDeXzZEb5"},
+        {date:"2026-08-20",phase:"W4 冲刺期",title:"上肢+核心",detail:"哑铃卧推4kg×2/3组15次、哑铃划船4kg/3组每侧15次、哑铃肩推1-2kg/3组15次、哑铃弯举1-4kg/3组15次、哑铃臂屈伸1kg/3组每侧15次、平板支撑3组60秒、俄罗斯转体3组25次、登山跑3组30秒",video:""},
+        {date:"2026-08-21",phase:"W4 冲刺期",title:"骑车+帕梅拉",detail:"骑车15分钟稳态(坡度4-5%/110-130W) + 帕梅拉20分钟热舞辣妹 + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1WDeXzZEb5"},
+        {date:"2026-08-22",phase:"W4 冲刺期",title:"全身力量",detail:"6动作×3轮，15s轮休。核心:平板60秒×3+卷腹20×3",video:""},
+        {date:"2026-08-23",phase:"W4 冲刺期",title:"骑车HIIT+帕梅拉+核心",detail:"骑车15分钟HIIT(10组) + 帕梅拉20分钟高强度HIIT + 核心(平板60秒×3/登山跑30秒×3/卷腹20×3/俄罗斯转体25×3) + 帕梅拉8分钟腿部拉伸",video:"https://bilibili.com/video/BV1X7411Z7bE"},
+        {date:"2026-08-24",phase:"W4 冲刺期",title:"休息+测量",detail:"晨起空腹排便后称重，量腰围/臀围/大腿围",video:""},
       ],
     },
   ],
@@ -624,7 +740,7 @@ function renderHome(){
 
   // pinned tasks (置顶) — 跨模块收集 item.pinned；就地交互，不跳转
   const pins=[];
-  CONFIG.modules.forEach(m=>(data[m.key]||[]).forEach(x=>{ if(x.pinned) pins.push({m,x}); }));
+  CONFIG.modules.forEach(m=>{ if(m.type==="plan") return; (data[m.key]||[]).forEach(x=>{ if(x.pinned) pins.push({m,x}); }); });
   const chkMark=icon("check",13,2.6);
   const pinSub=(m,x)=>{
     if(m.type==="checkin") return `${m.name} · 连续 ${streak(x.log)} 天`;
@@ -776,7 +892,11 @@ function confirmCalUncheck(item, ds){
 
 function wireHome(){
   $("#screen").querySelectorAll("[data-open]").forEach(el=>el.onclick=()=>go(el.dataset.open));
-  $("#screen").querySelectorAll("[data-quick]").forEach(el=>el.onclick=()=>{ go(el.dataset.quick); openEditor(el.dataset.quick,null); });
+  $("#screen").querySelectorAll("[data-quick]").forEach(el=>el.onclick=()=>{
+    const mk=el.dataset.quick, mm=modOf(mk);
+    go(mk);
+    if(mm && mm.type!=="plan") openEditor(mk,null);
+  });
   const find=el=>(data[el.dataset.mkey]||[]).find(i=>i.id==el.dataset.id);
   // 置顶卡：就地打卡 / 完成
   $("#screen").querySelectorAll(".js-pin-chk").forEach(el=>el.onclick=e=>{
@@ -802,6 +922,7 @@ function renderInsight(){
     else if(m.type==="checkin"){ const t=today(); const d=it.filter(x=>x.log&&x.log[t]).length; pct=it.length?Math.round(d/it.length*100):0; label=`${d}/${it.length}`; }
     else if(m.type==="progress"){ pct=avgProgress(it).value; label=`${pct}%`; }
     else if(m.type==="finance"){ const e=it.filter(x=>x.type==="expense").reduce((s,x)=>s+ +x.amount,0); label=`¥${e}`; }
+    else if(m.type==="plan"){ const log=(data[m.key]&&typeof data[m.key]==="object")?data[m.key]:{}; const days=Object.keys(log).filter(k=>log[k]).length; const tot=(m.plan||[]).length||36; pct=Math.round(days/tot*100); label=`${days}/${tot}`; }
     else { label=`${it.length} 条`; }
     return {m, pct, label};
   });
@@ -837,9 +958,148 @@ function renderInsight(){
 }
 
 /* ---------- MODULE VIEW ---------- */
+let planSelDate=null;
+function renderPlanModule(m){
+  const plan=m.plan||[];
+  const log=(data[m.key]&&typeof data[m.key]==="object")?data[m.key]:{};
+  const t=today();
+  const total=plan.length;
+  const doneDays=plan.filter(p=>log[p.date]).length;
+  const pct=total?Math.round(doneDays/total*100):0;
+  const todayIdx=plan.findIndex(p=>p.date===t);
+  const beforeStart=t<plan[0].date;
+  const afterEnd=plan.length&&t>plan[total-1].date;
+  const dayNum=todayIdx>=0?todayIdx+1:(beforeStart?0:total+1);
+  if(!planSelDate) planSelDate=t;
+  const selItem=plan.find(p=>p.date===planSelDate);
+
+  // hero
+  const hero=`<div class="plan-hero">
+    <div class="ph-ic">${icon(m.icon,22)}</div>
+    <div class="ph-tx">
+      <div class="ph-v">${(dayNum>0&&dayNum<=total)?'第'+dayNum+'天':'--'} / ${total}天</div>
+      <div class="ph-l">已完成 ${doneDays} 天 · ${pct}%</div>
+      <div class="ph-bar"><i style="width:${pct}%"></i></div>
+    </div></div>`;
+
+  // today card
+  let todayCard='';
+  const todayItem=plan.find(p=>p.date===t);
+  if(todayItem){
+    const isRest=/休息|拉伸|散步|恢复|测量/.test(todayItem.title);
+    const isDone=!!log[todayItem.date];
+    todayCard=`<div class="plan-today ${isRest?'is-rest':''}">
+      <span class="pt-tag ${isRest?'rest':''}">${esc(todayItem.phase)}</span><span class="pt-date">${todayItem.date.slice(5)} · 今日</span>
+      <div class="pt-title">${esc(todayItem.title)}</div>
+      <div class="pt-detail">${esc(todayItem.detail)}</div>
+      ${todayItem.video?`<a class="pt-video" href="${attr(todayItem.video)}" target="_blank" rel="noopener"><span style="font-size:10px">▶</span> 跟练视频</a>`:''}
+      <button class="pt-done ${isDone?'done':'undone'}" id="planCheckin">${isDone?'✓ 今日已完成':'打卡完成'}</button>
+    </div>`;
+  } else if(beforeStart){
+    todayCard=`<div class="plan-today"><div class="pt-empty"><span class="e">${icon(m.icon,24)}</span><div>计划尚未开始<br>开始日期：${plan[0].date}</div></div></div>`;
+  } else {
+    todayCard=`<div class="plan-today"><div class="pt-empty"><span class="e">${icon(m.icon,24)}</span><div>计划已结束<br>恭喜完成减脂计划！</div></div></div>`;
+  }
+
+  // calendar strip
+  const dowNames="日一二三四五六";
+  const strip=plan.map(p=>{
+    const d=new Date(p.date+'T00:00:00');
+    const dow=dowNames[d.getDay()];
+    const day=d.getDate();
+    const isDone=!!log[p.date];
+    const isToday=p.date===t;
+    const isRest=/休息|拉伸|散步|恢复|测量/.test(p.title);
+    const isSel=p.date===planSelDate;
+    const cls=['plan-day'];
+    if(isRest)cls.push('rest');
+    if(isDone)cls.push('done');
+    if(isToday)cls.push('today');
+    if(isSel)cls.push('sel');
+    return `<div class="${cls.join(' ')}" data-pdate="${p.date}"><div class="pd-box">${day}</div><div class="pd-dow">${dow}</div></div>`;
+  }).join('');
+
+  // selected day detail
+  let detailHtml='';
+  if(selItem){
+    const selDone=!!log[selItem.date];
+    detailHtml=`<div class="plan-detail">
+      <span class="pd-phase">${esc(selItem.phase)}</span>${selDone?'<span class="pd-phase" style="background:var(--module-1);color:#fff">✓ 已完成</span>':''}
+      <div class="pd-title">${esc(selItem.title)} <span style="font-size:12px;color:var(--text-secondary);font-weight:500">${selItem.date.slice(5)}</span></div>
+      <div class="pd-text">${esc(selItem.detail)}</div>
+      ${selItem.video?`<a class="pd-video" href="${attr(selItem.video)}" target="_blank" rel="noopener"><span style="font-size:10px">▶</span> 跟练视频</a>`:''}
+    </div>`;
+  }
+
+  // reference section
+  const refHtml=`<div class="plan-ref">
+    <div class="pr-card">
+      <h4>${icon('flame',13)} 视频速查</h4>
+      <ul>
+        <li><b>每日拉伸</b> BV1Zz4y1o7Vx</li>
+        <li><b>活力有氧</b> BV1G346zHEDh</li>
+        <li><b>腿部拉伸</b> BV1rQ2MBkELW</li>
+        <li><b>腹部燃脂</b> BV1mb4y167fR</li>
+        <li><b>站立腹部</b> BV15f4y1Y7xk</li>
+        <li><b>跳跃有氧</b> BV1QS4y1P7Yu</li>
+        <li><b>高强度HIIT</b> BV1X7411Z7bE</li>
+        <li><b>热舞辣妹</b> BV1WDeXzZEb5</li>
+      </ul>
+    </div>
+    <div class="pr-card">
+      <h4>${icon('activity',13)} 骑行参数</h4>
+      <ul>
+        <li><b>W1稳态</b> 坡2% / 80-100W</li>
+        <li><b>W2稳态</b> 坡3% / 90-110W</li>
+        <li><b>W3稳态</b> 坡4% / 100-120W</li>
+        <li><b>W4稳态</b> 坡4-5% / 110-130W</li>
+        <li><b>HIIT</b> 冲刺30″/恢复60″</li>
+        <li><b>稳态心率</b> 130-145</li>
+        <li><b>HIIT心率</b> 160-175</li>
+      </ul>
+    </div>
+  </div>`;
+
+  $("#screen").innerHTML=`<div class="greet"><div><h1>${m.name}</h1><p>${m.desc}</p></div></div>
+    <div style="margin-top:16px">
+      ${hero}
+      ${todayCard}
+      <div class="plan-cal">
+        <div class="pc-hd">${icon('calendar',15)} 日历总览
+          <span class="legend">
+            <span><i style="background:var(--module-3)"></i>已完成</span>
+            <span><i style="background:#f4eee6;border:1px solid #e5dccd"></i>休息</span>
+            <span><i style="background:var(--surface-nested);border:1px solid var(--border)"></i>待完成</span>
+          </span>
+        </div>
+        <div class="plan-strip">${strip}</div>
+        ${detailHtml}
+      </div>
+      <div class="sec-title">参考速查</div>
+      ${refHtml}
+    </div>`;
+
+  // wire checkin button
+  const ckBtn=$("#planCheckin");
+  if(ckBtn&&todayItem){
+    ckBtn.onclick=()=>{
+      data[m.key]=(data[m.key]&&typeof data[m.key]==="object")?data[m.key]:{};
+      if(data[m.key][todayItem.date]) delete data[m.key][todayItem.date];
+      else data[m.key][todayItem.date]=true;
+      planSelDate=todayItem.date;
+      persist();
+    };
+  }
+  // wire date strip
+  $("#screen").querySelectorAll(".plan-day").forEach(el=>{
+    el.onclick=()=>{ planSelDate=el.dataset.pdate; render(); };
+  });
+}
+
 function renderModule(key){
   const m=modOf(key); const it=data[key]||[];
   const t=today();
+  if(m.type==="plan"){ renderPlanModule(m); return; }
   let head="", extra="";
   if(m.type==="finance"){
     const inc=it.filter(x=>x.type==="income").reduce((s,x)=>s+ +x.amount,0);
