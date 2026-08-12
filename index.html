@@ -406,6 +406,34 @@
   .plan-detail .pd-text { font-size:12.5px; color:var(--text-secondary); line-height:1.6; margin-top:6px; white-space:pre-wrap; }
   .plan-detail .pd-video { display:inline-flex; align-items:center; gap:5px; margin-top:10px; font-size:12px; font-weight:600; color:var(--module-4); }
   .plan-detail .pd-video svg { flex:0 0 auto; }
+  /* recovery module */
+  .rec-question { margin-top:14px; padding:16px 18px; border-radius:var(--radius-card); background:var(--surface-card); border:1px solid var(--border); }
+  .rec-question .rq-tag { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; color:var(--module-4); }
+  .rec-question .rq-text { font-size:15px; font-weight:700; color:var(--text); margin-top:8px; line-height:1.5; }
+  .rec-tasks { margin-top:14px; }
+  .rec-tasks .rt-header { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px; }
+  .rec-task { display:flex; align-items:flex-start; gap:12px; padding:12px 14px; border-radius:var(--radius-tile); background:var(--surface-card); border:1px solid var(--border); margin-bottom:8px; cursor:pointer; transition:all .2s; }
+  .rec-task:active { transform:scale(.98); }
+  .rec-task.done { background:var(--module-4); border-color:var(--module-4); }
+  .rec-task.done .rt-label { color:#fff; }
+  .rec-task.done .rt-desc { color:rgba(255,255,255,.8); }
+  .rec-task .rt-check { width:24px; height:24px; border-radius:8px; border:2px solid var(--border); display:grid; place-items:center; flex:0 0 auto; margin-top:1px; transition:all .2s; }
+  .rec-task.done .rt-check { background:#fff; border-color:#fff; color:var(--module-4); }
+  .rec-task .rt-body { flex:1; min-width:0; }
+  .rec-task .rt-label { font-size:14px; font-weight:700; color:var(--text); }
+  .rec-task .rt-desc { font-size:12px; color:var(--text-secondary); margin-top:3px; line-height:1.5; }
+  .rec-goods { margin-top:14px; }
+  .rec-goods .rg-header { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px; }
+  .rg-input { width:100%; padding:11px 14px; border-radius:var(--radius-tile); background:var(--surface-card); border:1px solid var(--border); font-size:13.5px; color:var(--text); margin-bottom:8px; font-family:inherit; box-sizing:border-box; }
+  .rg-input:focus { outline:none; border-color:var(--module-4); }
+  .rg-input::placeholder { color:var(--text-tertiary); }
+  .rec-note { margin-top:14px; }
+  .rec-note .rn-header { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px; }
+  .rn-area { width:100%; min-height:80px; padding:12px 14px; border-radius:var(--radius-tile); background:var(--surface-card); border:1px solid var(--border); font-size:13.5px; color:var(--text); resize:vertical; font-family:inherit; line-height:1.6; box-sizing:border-box; }
+  .rn-area:focus { outline:none; border-color:var(--module-4); }
+  .rn-area::placeholder { color:var(--text-tertiary); }
+  .rec-cal { margin-top:14px; }
+  .rec-day-card { margin-top:14px; }
 
   .plan-ref { margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
   .plan-ref .pr-card { padding:13px 14px; border-radius:var(--radius-tile); background:var(--surface-card); border:1px solid var(--border); box-shadow:var(--shadow-card); }
@@ -504,6 +532,7 @@ const CONFIG = {
     { label: "记打卡", icon: "check",    module: "checkin", tint: "#eef3ec", color: "var(--module-1)" },
     { label: "记想法", icon: "pen",      module: "note",    tint: "#f1eef4", color: "var(--module-5)" },
     { label: "减脂打卡", icon: "flame",  module: "fitness", tint: "#fce8e6", color: "var(--module-4)" },
+    { label: "心理复原", icon: "heart",  module: "recovery", tint: "#f0ede8", color: "var(--module-4)" },
   ],
 
   modules: [
@@ -672,6 +701,38 @@ const CONFIG = {
           res:[["深入","《顺逆皆宜的人生》Liz Greene"],["延伸","行运/合盘/南北交点"]] },
       ],
     },
+    {
+      key: "recovery", name: "心理复原", icon: "heart", tint: "#f0ede8", color: "var(--module-4)",
+      type: "recovery", desc: "14天行为激活 · 8/7-8/20",
+      startDate: "2026-08-07",
+      duration: 14,
+      tasks: [
+        { id: 1, label: "同时间起床", desc: "每天差不多时间起（如7:30±1h），别睡到中午" },
+        { id: 2, label: "15分钟户外走", desc: "出门走15分钟（楼下/小区都行），不要求快" },
+        { id: 3, label: "微任务1件", desc: "挑1件最小的事先做：回封邮件/整理桌面/写个标题" },
+        { id: 4, label: "睡前3件小事", desc: "睡前写3条「今天我做到了的事」" },
+        { id: 5, label: "工作最小单位", desc: "工作只推进1个最小单位，做完就停，不追加" },
+        { id: 6, label: "考博输入(周2次)", desc: "每周2天各20分钟：看页文献/听段课，不强迫输出" },
+        { id: 7, label: "周末休息/相亲暂停", desc: "周末半天不碰工作、不安排相亲；相亲暂停2周" },
+      ],
+      questions: [
+        "今天哪件事让我觉得「我做到了」？",
+        "我对自己的哪句批评，其实并不公平？",
+        "今天有没有哪个瞬间，我对自己温柔了一点？",
+        "如果朋友处在我的处境，我会对他说什么？",
+        "今天我照顾自己了吗？是怎么照顾的？",
+        "哪件小事，放在以前我可能忽略、今天却注意到了？",
+        "我是不是把「没做成的事」放大了，而把「做成的」缩小了？",
+        "今天我允许自己休息了吗？",
+        "有什么是我今天控制不了的，又有什么是我能决定的？",
+        "睡前，我愿意为今天的自己说一句什么好话？",
+        "今天我迈出的最小一步是什么？",
+        "我是不是在用别人的标准，审判自己的节奏？",
+        "今天哪件事让我觉得「我做到了」？",
+        "我对自己的哪句批评，其实并不公平？",
+      ],
+      seed: {},
+    },
   ],
 };
 
@@ -708,6 +769,7 @@ const ICONS = {
   globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 9h17"/><path d="M3.5 15h17"/><path d="M12 3.5c2.5 2.8 3.8 5.6 3.8 8.5s-1.3 5.7-3.8 8.5c-2.5-2.8-3.8-5.6-3.8-8.5s1.3-5.7 3.8-8.5z"/>',
   sparkles:'<path d="M12 3l1.6 4.8L18 9.5l-4.4 1.7L12 16l-1.6-4.8L6 9.5l4.4-1.7z"/><path d="M19 14l.7 2.1L22 17l-2.3.9L19 20l-.7-2.1L16 17l2.3-.9z"/>',
   feather:'<path d="M20 4c-3 0-7 1-10 4L4 14v6h6l6-6c3-3 4-7 4-10z"/><path d="M8 14l4-4"/><path d="M11 17l4-4"/>',
+  heart:'<path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.5 1 4 2.5C10.5 6.5 12 5.5 14 5.5c3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/>',
 };
 function icon(name, size=22, sw=1.7){
   const path = ICONS[name] || ICONS.grid;
@@ -994,6 +1056,7 @@ function renderInsight(){
     else if(m.type==="progress"){ pct=avgProgress(it).value; label=`${pct}%`; }
     else if(m.type==="finance"){ const e=it.filter(x=>x.type==="expense").reduce((s,x)=>s+ +x.amount,0); label=`¥${e}`; }
     else if(m.type==="plan"){ const log=(data[m.key]&&typeof data[m.key]==="object")?data[m.key]:{}; const days=Object.keys(log).filter(k=>log[k]).length; const tot=(m.plan||[]).length||36; pct=Math.round(days/tot*100); label=`${days}/${tot}`; }
+    else if(m.type==="recovery"){ const log=(data[m.key]&&typeof data[m.key]==="object")?data[m.key]:{}; const sd=m.startDate||"2026-08-07"; const dur=m.duration||14; const startD=new Date(sd+"T00:00:00"); let days=0; for(let i=0;i<dur;i++){const d=new Date(startD);d.setDate(d.getDate()+i);const ds=d.toISOString().slice(0,10);const e=log[ds];if(e&&(e.checks||[]).filter(c=>c).length>=4)days++;} pct=Math.round(days/dur*100); label=`${days}/${dur}`; }
     else { label=`${it.length} 条`; }
     return {m, pct, label};
   });
@@ -1013,6 +1076,7 @@ function renderInsight(){
 
 /* ---------- MODULE VIEW ---------- */
 let planSelDate=null;
+let recSelDate=null;
 function renderGoalsModule(m){
   const it=data[m.key]||[];
   const hero=headHero(m,`${it.length}`,`个目标 · 考博/论文/课题`,null);
@@ -1310,6 +1374,110 @@ function renderPlanModule(m){
   });
 }
 
+function renderRecoveryModule(m){
+  const log=(data[m.key]&&typeof data[m.key]==="object")?data[m.key]:{};
+  const t=today();
+  const tasks=m.tasks||[];
+  const questions=m.questions||[];
+  const sd=m.startDate||"2026-08-07";
+  const dur=m.duration||14;
+  const dates=[];
+  const startD=new Date(sd+"T00:00:00");
+  for(let i=0;i<dur;i++){const d=new Date(startD);d.setDate(d.getDate()+i);dates.push(d.toISOString().slice(0,10));}
+  const totalDays=dates.length;
+  const todayIdx=dates.indexOf(t);
+  const dayNum=todayIdx>=0?todayIdx+1:(t<sd?0:totalDays+1);
+  const doneDays=dates.filter(ds=>{const e=log[ds];return e&&(e.checks||[]).filter(c=>c).length>=4;}).length;
+  const pct=totalDays?Math.round(doneDays/totalDays*100):0;
+  let streak=0;
+  for(let i=todayIdx>=0?todayIdx:totalDays-1;i>=0;i--){const e=log[dates[i]];if(e&&(e.checks||[]).filter(c=>c).length>=4)streak++;else break;}
+  if(!recSelDate||!dates.includes(recSelDate))recSelDate=t;
+  const selDate=recSelDate;
+  const selIdx=dates.indexOf(selDate);
+  const selEntry=log[selDate]||{checks:Array(tasks.length).fill(false),goods:["","",""],note:""};
+  const isFuture=selDate>t;
+  const qIdx=selIdx>=0?selIdx:0;
+  const selQ=questions[qIdx]||questions[0]||"";
+  const dowNames="日一二三四五六";
+  const selD=new Date(selDate+"T00:00:00");
+  const selDow=dowNames[selD.getDay()];
+  const isToday=selDate===t;
+  const dateLabel=selDate.slice(5)+" · 周"+selDow+(isToday?" · 今天":(isFuture?" · 未来":" · 回顾"));
+  const hero=`<div class="plan-hero" style="background:linear-gradient(135deg,${m.tint},var(--surface-card))">
+    <div class="ph-ic" style="background:var(--surface-card);color:${m.color}">${icon(m.icon,22)}</div>
+    <div class="ph-tx">
+      <div class="ph-v" style="color:${m.color}">${(dayNum>0&&dayNum<=totalDays)?'第'+dayNum+'天':'--'} / ${totalDays}天</div>
+      <div class="ph-l">连续 ${streak} 天 · 完成 ${doneDays}/${totalDays} · ${pct}%</div>
+      <div class="ph-bar"><i style="width:${pct}%;background:linear-gradient(90deg,${m.color},var(--module-4))"></i></div>
+    </div></div>`;
+  const qCard=`<div class="rec-question">
+    <span class="rq-tag">${icon('quote',13)} 今日一问</span>
+    <div class="rq-text">${esc(selQ)}</div>
+  </div>`;
+  const checks=selEntry.checks||Array(tasks.length).fill(false);
+  const taskList=tasks.map((tk,i)=>{const ck=checks[i];
+    return `<div class="rec-task ${ck?'done':''}" data-tidx="${i}">
+      <div class="rt-check">${ck?icon('check',16):''}</div>
+      <div class="rt-body"><div class="rt-label">${esc(tk.label)}</div><div class="rt-desc">${esc(tk.desc)}</div></div>
+    </div>`;}).join('');
+  const tasksHtml=`<div class="rec-tasks">
+    <div class="rt-header">${icon('check',15)} 每日7项 · 完成 ${checks.filter(c=>c).length}/${tasks.length}</div>
+    ${taskList}
+  </div>`;
+  const goods=selEntry.goods||["","",""];
+  const goodsHtml=`<div class="rec-goods">
+    <div class="rg-header">${icon('star',15)} 三件好事（今天我做到了的事）</div>
+    ${[0,1,2].map(i=>`<input class="rg-input" data-gidx="${i}" type="text" placeholder="第${i+1}件：我做到了…" value="${attr(goods[i]||'')}" ${isFuture?'disabled':''}>`).join('')}
+  </div>`;
+  const noteHtml=`<div class="rec-note">
+    <div class="rn-header">${icon('pen',15)} 今日记录</div>
+    <textarea class="rn-area" placeholder="其他想记的 / 完成情况…" ${isFuture?'disabled':''}>${esc(selEntry.note||'')}</textarea>
+  </div>`;
+  const strip=dates.map(ds=>{const d=new Date(ds+"T00:00:00");const dow=dowNames[d.getDay()];const day=d.getDate();
+    const e=log[ds];const isDone=e&&(e.checks||[]).filter(c=>c).length>=4;const isTd=ds===t;const isSel=ds===selDate;
+    const cls=['plan-day'];if(isDone)cls.push('done');if(isTd)cls.push('today');if(isSel)cls.push('sel');
+    return `<div class="${cls.join(' ')}" data-rdate="${ds}"><div class="pd-box">${day}</div><div class="pd-dow">${dow}</div></div>`;}).join('');
+  $("#screen").innerHTML=`<div class="greet"><div><h1>${m.name}</h1><p>${m.desc}</p></div></div>
+    <div style="margin-top:16px">
+      ${hero}
+      <div class="rec-cal">
+        <div class="pc-hd">${icon('calendar',15)} 14天日历
+          <span class="legend"><span><i style="background:${m.color}"></i>已完成</span><span><i style="background:var(--surface-nested);border:1px solid var(--border)"></i>待完成</span></span>
+        </div>
+        <div class="plan-strip">${strip}</div>
+      </div>
+      <div class="rec-day-card">
+        <div class="rdc-date" style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px">${dateLabel}</div>
+        ${qCard}
+        ${tasksHtml}
+        ${goodsHtml}
+        ${noteHtml}
+      </div>
+    </div>`;
+  $("#screen").querySelectorAll(".rec-task").forEach(el=>{
+    el.onclick=()=>{
+      if(isFuture)return;
+      const idx=+el.dataset.tidx;
+      const entry=log[selDate]||(log[selDate]={checks:Array(tasks.length).fill(false),goods:["","",""],note:""});
+      entry.checks=entry.checks||Array(tasks.length).fill(false);
+      entry.checks[idx]=!entry.checks[idx];
+      data[m.key]=log;persist();
+    };
+  });
+  $("#screen").querySelectorAll(".rg-input").forEach(el=>{
+    el.oninput=()=>{
+      const idx=+el.dataset.gidx;
+      const entry=log[selDate]||(log[selDate]={checks:Array(tasks.length).fill(false),goods:["","",""],note:""});
+      entry.goods=entry.goods||["","",""];entry.goods[idx]=el.value;data[m.key]=log;store.save();
+    };
+  });
+  const rnArea=$("#screen").querySelector(".rn-area");
+  if(rnArea){rnArea.oninput=()=>{const entry=log[selDate]||(log[selDate]={checks:Array(tasks.length).fill(false),goods:["","",""],note:""});entry.note=rnArea.value;data[m.key]=log;store.save();};}
+  $("#screen").querySelectorAll(".plan-day").forEach(el=>{
+    el.onclick=()=>{recSelDate=el.dataset.rdate;render();};
+  });
+}
+
 function renderModule(key){
   const m=modOf(key); const it=data[key]||[];
   const t=today();
@@ -1318,6 +1486,7 @@ function renderModule(key){
   if(m.type==="thesis"){ renderThesisModule(m); return; }
   if(m.type==="english"){ renderEnglishModule(m); return; }
   if(m.type==="astrology"){ renderAstrologyModule(m); return; }
+  if(m.type==="recovery"){ renderRecoveryModule(m); return; }
   let head="", extra="";
   if(m.type==="finance"){
     const inc=it.filter(x=>x.type==="income").reduce((s,x)=>s+ +x.amount,0);
