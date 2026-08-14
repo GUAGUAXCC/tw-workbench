@@ -471,6 +471,46 @@
   .th-chk.on{background:var(--module-1);border-color:var(--module-1);}
   .th-chk svg{opacity:0;}
   .th-chk.on svg{opacity:1;}
+
+  /* ============================================================
+     响应式自适应 — iPad / 平板 / 桌面
+     ============================================================ */
+  /* iPad 竖屏 (≥768px) */
+  @media (min-width: 768px) {
+    body { max-width: 720px; font-size: 16px; }
+    .nav { max-width: 720px; }
+    .sheet { max-width: 720px; }
+    .greet h1 { font-size: 28px; }
+    .greet p { font-size: 14px; }
+    .card { padding: 18px; }
+    .hero-v { font-size: 36px; }
+    .rec { padding: 16px 18px; }
+    .sec-title { font-size: 18px; }
+    .drawer { width: 340px; }
+    #screen { padding: 0 6px; }
+  }
+  /* iPad 横屏 / 小桌面 (≥1024px) */
+  @media (min-width: 1024px) {
+    body { max-width: 900px; font-size: 17px; }
+    .nav { max-width: 900px; }
+    .sheet { max-width: 900px; }
+    .greet h1 { font-size: 32px; }
+    .greet p { font-size: 15px; }
+    .card { padding: 20px 22px; }
+    .hero-v { font-size: 42px; }
+    .rec { padding: 18px 22px; }
+    .sec-title { font-size: 20px; }
+    .drawer { width: 360px; }
+    #screen { padding: 0 8px; }
+    .module-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px; }
+    .plan-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  /* 桌面宽屏 (≥1366px) */
+  @media (min-width: 1366px) {
+    body { max-width: 1100px; font-size: 17px; }
+    .nav { max-width: 1100px; }
+    .sheet { max-width: 1100px; }
+  }
 </style>
 </head>
 <body>
