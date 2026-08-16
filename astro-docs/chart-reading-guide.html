@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星盘读表手册 · 左下角两张表</title>
+<style>
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  color: #1d1d1f;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 56px 48px 96px;
+  background: #fff;
+  line-height: 1.7;
+  font-size: 14px;
+  font-weight: 400;
+}
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  letter-spacing: -0.6px;
+  color: #1d1d1f;
+}
+.sub {
+  color: #86868b;
+  font-size: 12px;
+  margin: 0 0 48px;
+  font-weight: 400;
+}
+h2 {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 56px 0 16px;
+  color: #1d1d1f;
+  letter-spacing: -0.2px;
+}
+h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 24px 0 10px;
+  color: #1d1d1f;
+}
+h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 18px 0 8px;
+  color: #1d1d1f;
+}
+p { margin: 10px 0; color: #1d1d1f; }
+ul, ol { margin: 10px 0; padding-left: 22px; }
+li { margin: 6px 0; }
+.tag {
+  display: inline-block;
+  background: #1d1d1f;
+  color: #fff;
+  padding: 2px 9px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+.tag.alt { background: #f5f5f7; color: #1d1d1f; }
+.key { font-weight: 600; color: #1d1d1f; }
+.muted { color: #6e6e73; }
+.note {
+  color: #6e6e73;
+  font-size: 12.5px;
+  margin: 12px 0 18px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0 14px;
+  font-size: 13px;
+}
+th, td {
+  border: 1px solid #d2d2d7;
+  padding: 8px 6px;
+  text-align: center;
+  font-weight: 400;
+  color: #1d1d1f;
+}
+th {
+  background: #f5f5f7;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+td.label, th.label {
+  background: #fafafa;
+  font-weight: 600;
+  text-align: center;
+  font-size: 13px;
+}
+td.empty {
+  background: #fafafa;
+  color: #d2d2d7;
+}
+td.sym { font-size: 15px; font-weight: 600; }
+.sym { font-size: 15px; font-weight: 600; }
+.divider {
+  border: 0;
+  border-top: 1px solid #d2d2d7;
+  margin: 48px 0;
+}
+.summary {
+  background: #f5f5f7;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.summary ol { margin: 8px 0 0; padding-left: 22px; }
+.summary li { margin: 6px 0; }
+.tip {
+  border-left: 3px solid #1d1d1f;
+  padding: 6px 16px;
+  margin: 18px 0;
+  font-size: 13px;
+  background: #fafafa;
+  border-radius: 0 6px 6px 0;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  margin: 12px 0 18px;
+  font-size: 12.5px;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #1d1d1f;
+}
+.legend-item .s { font-size: 16px; font-weight: 600; }
+.color-chip {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 2px;
+  vertical-align: -1px;
+  margin-right: 4px;
+}
+.color-blue { background: #2e7eb8; }
+.color-red  { background: #c8332a; }
+.color-green{ background: #4a8a3a; }
+.color-orange{background: #d27d1f; }
+</style>
+</head>
+<body>
+
+<h1>星盘左下角两张表 · 读表手册</h1>
+<p class="sub">Xin Huang · 1991-10-28 07:00 · 福州 · 整理于 2026-08-15</p>
+
+<h2>一、盘上能看到几张表？</h2>
+<p>你的盘（astro.com 出的圆盘+表格）实际上有 <span class="key">三张表</span>，位置不同：</p>
+<ul>
+<li><span class="tag">左下角 ①</span> <span class="key">Aspects Grid · 主相位网格</span>——横竖都是行星符号，格子里填相位符号</li>
+<li><span class="tag">左下角 ②</span> <span class="key">元素×模式分布表（Element & Quality）</span>——4 行 3 列，列出盘里所有星落在哪个"元素+模式"组合</li>
+<li><span class="tag">左上 ③</span> <span class="key">Planet Positions · 行星位置表</span>——13 行，每行星星符号 + 度数 + 落座</li>
+</ul>
+<p class="note">你说的"左下角两张表"指的就是 ① 和 ②——<span class="key">一张是相位网格，一张是元素分布表</span>，性质完全不同。下面分别教你怎么读。</p>
+
+<hr class="divider">
+
+<h2>二、表①（左下角上方）· 主相位网格</h2>
+<p class="note">这张列出你盘里所有 <span class="key">主相位</span>（合 ☌、对 ☍、四 □、三 △、六 ⚹）的关系。</p>
+
+<h3>1. 它长什么样</h3>
+<p>一张 <span class="key">方格表</span>：行和列都是 <span class="key">13 个行星 / 虚点符号</span>（☉ ☽ ☿ ♀ ♂ ♃ ♄ ♅ ♆ ♇ ☊ � ⚹ 等），交叉的格子里填 <span class="key">相位符号</span>。你盘里是 13×13 的满网格（下面缩到 6×6 看结构）。</p>
+
+<table>
+<tr><th class="label"></th><th>☉</th><th>☽</th><th>☿</th><th>♀</th><th>♂</th><th>♃</th></tr>
+<tr><th class="label">☉</th><td class="empty">—</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th class="label">☽</th><td></td><td class="empty">—</td><td></td><td></td><td></td><td></td></tr>
+<tr><th class="label">☿</th><td></td><td></td><td class="empty">—</td><td></td><td></td><td></td></tr>
+<tr><th class="label">♀</th><td></td><td></td><td></td><td class="empty">—</td><td></td><td></td></tr>
+<tr><th class="label">♂</th><td></td><td></td><td></td><td></td><td class="empty">—</td><td></td></tr>
+<tr><th class="label">♃</th><td></td><td></td><td></td><td></td><td></td><td class="empty">—</td></tr>
+</table>
+
+<p class="note">对角线（自己×自己）的格子是空的——一颗星不会和自己形成相位。<br>
+<span class="key">表是上三角 + 下三角对称的</span>：☉行×�列 和 ☽行×☉列 的格子里是同一个相位，看一个就行。</p>
+
+<h3>2. 怎么读（核心三步）</h3>
+<div class="tip">
+  <span class="key">① 找两颗星</span>：第一列（行标签）找 A，第一行（列标签）找 B。<br>
+  <span class="key">② 看交叉格</span>：A 的行 × B 的列的格子里是什么符号。<br>
+  <span class="key">③ 翻译含义</span>：用符号对照表查出相位类型，再按"两星含义 + 相位属性"合成一句解读。
+</div>
+
+<h3>3. 相位符号对照表（主相位）</h3>
+<table>
+<tr><th>符号</th><th>名称</th><th>角度</th><th>属性</th><th>一句话</th></tr>
+<tr><td class="sym">☌</td><td>合相</td><td>0°</td><td>融合</td><td>两星能量合一，最强</td></tr>
+<tr><td class="sym">⚹</td><td>六分</td><td>60°</td><td>和谐·机会</td><td>顺，但要主动才抓得住</td></tr>
+<tr><td class="sym">□</td><td>四分</td><td>90°</td><td>紧张·摩擦</td><td>内在冲突，逼你成长</td></tr>
+<tr><td class="sym">△</td><td>三分</td><td>120°</td><td>和谐·天赋</td><td>天生顺畅，毫不费力</td></tr>
+<tr><td class="sym">☍</td><td>对分</td><td>180°</td><td>紧张·拉扯</td><td>两股力对立，要平衡</td></tr>
+</table>
+
+<h3>4. 你盘上能直接读到的几个相位</h3>
+<p class="note">下面这几个在我读你盘时能确认，照着这个格式去对照表①的其他格子。</p>
+<table>
+<tr><th>格子里</th><th>翻译</th><th>含义</th></tr>
+<tr><td>☉ 行 × ☿ 列：<span class="sym">☌</span></td><td>太阳合水星（都在天蝎约 19°）</td><td>思维与自我高度一致，表达精准</td></tr>
+<tr><td>☉ 行 × ♂ 列：<span class="sym">☌</span></td><td>太阳合火星（都在天蝎约 7°）</td><td>意志力与行动力合一，目标感极强</td></tr>
+<tr><td>☉ 行 × ♇ 列：<span class="sym">☌</span></td><td>太阳合冥王（都在天蝎约 19°）</td><td>自我与深层转化力量绑定，蜕变能力拉满</td></tr>
+<tr><td>☽ 行 × ♂ 列：<span class="sym">△</span></td><td>月亮三分火星（月亮巨蟹 3° vs 火星天蝎 7°）</td><td>情绪与行动同频，直觉驱动行动</td></tr>
+<tr><td>♀ 行 × ☉ 列：<span class="sym">□</span></td><td>金星四分太阳（金星处女 17° vs 太阳天蝎 4°）</td><td>"爱的方式"和"自我表达"之间有内在张力</td></tr>
+</table>
+
+<h3>5. 颜色怎么认（在你盘上看时）</h3>
+<div class="legend">
+  <span class="legend-item"><span class="color-chip color-blue"></span>蓝色格子 = 和谐相位（⚹ △）</span>
+  <span class="legend-item"><span class="color-chip color-red"></span>红色格子 = 紧张相位（□ ☍）</span>
+  <span class="legend-item"><span class="color-chip color-orange"></span>橙色格子 = 中性偏紧张（部分 ☌ 也用此色）</span>
+  <span class="legend-item"><span class="color-chip color-green"></span>绿色格子 = 次要和谐（少数盘用）</span>
+</div>
+<p class="note">具体配色以你盘上看到的为准；不同排盘软件配色略有差异。本手册正文用纯黑字符排版，是为了和你的极简审美一致。</p>
+
+<hr class="divider">
+
+<h2>三、表②（左下角另一张）· 元素×模式分布表（Element & Quality）</h2>
+<p class="note">这张 <span class="key">不是相位表</span>，是看<span class="key">性格基调</span>的关键工具——告诉你盘里所有行星/虚点/MC/AC 落在哪一类"元素 + 模式"组合里。</p>
+
+<h3>1. 它长什么样</h3>
+<p>一张 <span class="key">4 行 × 3 列的小表</span>：</p>
+<ul>
+<li><span class="key">4 行</span> = 4 元素：<span class="key">F 火 · E 土 · A 风 · W 水</span></li>
+<li><span class="key">3 列</span> = 3 模式：<span class="key">C 基本（Cardinal）· F 固定（Fixed）· M 变动（Mutable）</span></li>
+<li><span class="key">12 个格子</span> = 12 星座的归类（每个星座有唯一的"元素 + 模式"组合）</li>
+</ul>
+<p>每个格子里列出 <span class="key">落在那个组合里的所有行星 / 虚点 / MC / AC 符号</span>。你截图发我的就是这张。</p>
+
+<h3>2. 12 星座归类表（先背这张）</h3>
+<table>
+<tr><th>星座</th><th>符号</th><th>元素</th><th>模式</th><th>格子位置</th></tr>
+<tr><td>白羊</td><td class="sym">♈</td><td>火</td><td>基本</td><td>F 行 × C 列</td></tr>
+<tr><td>金牛</td><td class="sym">♉</td><td>土</td><td>固定</td><td>E 行 × F 列</td></tr>
+<tr><td>双子</td><td class="sym">♊</td><td>风</td><td>变动</td><td>A 行 × M 列</td></tr>
+<tr><td>巨蟹</td><td class="sym">♋</td><td>水</td><td>基本</td><td>W 行 × C 列</td></tr>
+<tr><td>狮子</td><td class="sym">♌</td><td>火</td><td>固定</td><td>F 行 × F 列</td></tr>
+<tr><td>处女</td><td class="sym">♍</td><td>土</td><td>变动</td><td>E 行 × M 列</td></tr>
+<tr><td>天秤</td><td class="sym">♎</td><td>风</td><td>基本</td><td>A 行 × C 列</td></tr>
+<tr><td>天蝎</td><td class="sym">�</td><td>水</td><td>固定</td><td>W 行 × F 列</td></tr>
+<tr><td>射手</td><td class="sym">♐</td><td>火</td><td>变动</td><td>F 行 × M 列</td></tr>
+<tr><td>摩羯</td><td class="sym">�</td><td>土</td><td>基本</td><td>E 行 × C 列</td></tr>
+<tr><td>水瓶</td><td class="sym">♒</td><td>风</td><td>固定</td><td>A 行 × F 列</td></tr>
+<tr><td>双鱼</td><td class="sym">♓</td><td>水</td><td>变动</td><td>W 行 × M 列</td></tr>
+</table>
+
+<h3>3. 怎么读（三步）</h3>
+<div class="tip">
+  <span class="key">① 数每行</span>（4 元素）—— 哪个元素符号最多，就是你的主导元素。<br>
+  <span class="key">② 数每列</span>（3 模式）—— 哪个模式符号最多，就是你的主导模式。<br>
+  <span class="key">③ 看空格</span>—— 哪个"元素+模式"组合完全没能量，那是你盘的盲区。
+</div>
+
+<h3>4. 性格含义速查</h3>
+<table>
+<tr><th colspan="2">元素（主导元素决定）</th><th colspan="2">模式（主导模式决定）</th></tr>
+<tr><td>火多</td><td>行动派、有冲劲、敢打敢拼</td><td>基本多</td><td>主动、开创、爱当领导</td></tr>
+<tr><td>土多</td><td>务实、稳重、慢热、落地</td><td>固定多</td><td>坚持、执着、固执、不易变</td></tr>
+<tr><td>风多</td><td>理性、爱表达、社交、思维活跃</td><td>变动多</td><td>灵活、适应性强、易变通</td></tr>
+<tr><td>水多</td><td>感性、直觉强、共情深</td><td colspan="2"></td></tr>
+</table>
+
+<h3>5. 你盘上的分布（对照你的图）</h3>
+<table>
+<tr><th colspan="3">元素分布（4 行汇总）</th></tr>
+<tr><td><span class="key">火 F</span></td><td>MC 天顶（狮子）+ 凯龙（狮子）</td><td>2 颗</td></tr>
+<tr><td><span class="key">土 E</span></td><td>金星+木星（处女）+ 天王+海王+北交（摩羯）</td><td>5 颗</td></tr>
+<tr><td><span class="key">风 A</span></td><td>土星（水瓶）</td><td>1 颗</td></tr>
+<tr><td><span class="key">水 W</span></td><td>太阳+水星+火星+冥王（天蝎）+ 月亮（巨蟹）</td><td>6 颗</td></tr>
+</table>
+
+<table>
+<tr><th colspan="3">模式分布（3 列汇总）</th></tr>
+<tr><td><span class="key">基本 C</span></td><td>月亮（巨蟹）+ 天王+海王+北交（摩羯）</td><td>4 颗</td></tr>
+<tr><td><span class="key">固定 F</span></td><td>太阳+水星+火星+冥王（天蝎）+ MC+凯龙（狮子）+ 土星（水瓶）</td><td>7 颗</td></tr>
+<tr><td><span class="key">变动 M</span></td><td>金星+木星（处女）</td><td>2 颗</td></tr>
+</table>
+
+<div class="summary">
+  <span class="key">两个一眼看出的结论：</span>
+  <ol>
+    <li><span class="key">水 + 土压倒性</span>（水 6 + 土 5 = 11 颗里 11 颗），火 2、风 1 极少 → 你是<span class="key">高度感性 + 务实</span>的人，直觉强、重落地；冲劲和理性都偏弱。</li>
+    <li><span class="key">固定模式压倒性</span>（7 颗），基本和变动都偏少 → 你<span class="key">极其固执、坚定、不易改变</span>。优势是<span class="key">有恒心、能深入</span>（配合群星天蝎 8 宫，转化能力极强）；劣势是<span class="key">变通性差、抗拒新事物</span>。</li>
+    <li>配合之前的<span class="key">8 宫群星</span>：固定多 + 8 宫 = <span class="key">"一旦认定就死磕到底"</span>的人——和你现在在做的事（考博、整理前列腺癌治疗资料）高度一致。</li>
+  </ol>
+</div>
+
+<p class="note">表②的读法和表①完全不同：表①看"两星关系"，表②看"整体分布"。两者配合 = 既懂结构、又懂基调。</p>
+
+<hr class="divider">
+
+<h2>四、表③（左上）· 行星位置表（简短回顾）</h2>
+<p>这一张你之前学过，这里只列要点：</p>
+<ul>
+<li><span class="key">位置</span>：左上，出生信息下方</li>
+<li><span class="key">每行 = 一颗星</span>，列出：行星符号 + 英文名 / 度°分' / 落座缩写</li>
+<li><span class="key">关键三列</span>：①度数 = 在星座里的精确位置；②落座 = 怎么演；③宫位 = 在哪演</li>
+<li><span class="key">R 标记</span> = 逆行（能量转为内省）</li>
+</ul>
+<p class="note">你盘里表③的具体内容之前已逐行讲过，这里不重复。</p>
+
+<hr class="divider">
+
+<h2>五、三步读表法（总结）</h2>
+<div class="summary">
+  <ol>
+    <li><span class="key">先扫表①</span>，找出 <span class="key">红格子（□ ☍）</span>——这是你盘里 <span class="key">最需要成长的张力点</span>，也是你给别人解读时最先要指出的"功课"。</li>
+    <li><span class="key">再看蓝格子（△ �）</span>——这是你 <span class="key">天生顺畅的天赋</span>，是你盘里最容易做到、也最容易忽视的能力。</li>
+    <li><span class="key">最后回到圆盘</span>：把每个相位的两颗星对应回圆盘位置（落在哪个宫、哪条人生线），就知道"这个张力/天赋在哪个人生领域运作"。</li>
+  </ol>
+</div>
+
+<h2>六、实战练习（建议照着做一遍）</h2>
+<ol>
+<li>打开你盘图，对照表①，把 <span class="key">所有非空格子</span> 用文字列出来：「A 行 × B 列 = 符号」。</li>
+<li>对每一条用句式写一句解读：「<span class="key">A 含义 + B 含义 + 相位属性 → 表现为什么</span>」。</li>
+<li>把解读按"红格 / 蓝格"分成两列——红格是功课，蓝格是天赋。</li>
+<li>最后整体读一遍，看有没有 <span class="key">反复出现的主题</span>（比如你的盘里"天蝎能量"反复出现，就是你的主线）。</li>
+</ol>
+<p class="note">这是你以后 <span class="key">给别人测算的基本功</span>——表读得熟，圆盘只是锦上添花。</p>
+
+</body>
+</html>
